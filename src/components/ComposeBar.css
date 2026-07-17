@@ -1,0 +1,50 @@
+.compose-fab {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--walnut);
+  color: var(--paper);
+  font-size: 30px;
+  font-family: var(--font-display);
+  border: none;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+  transition: transform 0.15s ease, background 0.15s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.compose-fab:hover {
+  transform: scale(1.08);
+  background: var(--walnut-dark);
+}
+
+.compose-panel {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  width: 300px;
+  background: var(--paper);
+  border-radius: 4px 4px 12px 4px;
+  padding: 20px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+  transform: rotate(-1deg);
+}
+
+.compose-textarea {
+  width: 100%;
+  border: 1.5px solid #DCD3C0;
+  border-radius: 4px;
+  padding: 10px;
+  font-family: var(--font-hand);
+  font-size: 17px;
+  color: var(--ink);
+  resize: none;
+  background: #FFFEFA;
+}
+
+.compose-textarea:focus {
+  outline: none;
