@@ -1,11 +1,10 @@
 import './StickyNote.css';
 
-function StickyNote({ note, onClaim, onResolve, currentUserId }) {
+function StickyNote({ note, onClaim, onResolve, onOpen, currentUserId }) {
   const isAuthor = note.authorId === currentUserId;
   const isClaimer = note.claimedById === currentUserId;
   const canResolve = isAuthor || isClaimer;
 
-  // Deterministic "random" tilt based on note id, so it stays consistent on re-render
   const tilt = ((note.id * 37) % 8) - 4;
 
   return (
@@ -15,6 +14,7 @@ function StickyNote({ note, onClaim, onResolve, currentUserId }) {
         '--note-color': note.authorColorHex,
         '--note-tilt': `${tilt}deg`,
       }}
+      onClick={() => onOpen(note)}
     >
       <div className="sticky-note-header">
         <span className="sticky-note-author">{note.authorName}</span>
@@ -32,12 +32,18 @@ function StickyNote({ note, onClaim, onResolve, currentUserId }) {
 
       <div className="sticky-note-actions">
         {note.type === 'HELP' && note.status === 'OPEN' && (
-          <button className="sticky-note-btn" onClick={() => onClaim(note.id)}>
+          <button
+            className="sticky-note-btn"
+            onClick={(e) => { e.stopPropagation(); onClaim(note.id); }}
+          >
             I'll do it
           </button>
         )}
         {note.status !== 'RESOLVED' && canResolve && (
-          <button className="sticky-note-btn secondary" onClick={() => onResolve(note.id)}>
+          <button
+            className="sticky-note-btn secondary"
+            onClick={(e) => { e.stopPropagation(); onResolve(note.id); }}
+          >
             Resolve
           </button>
         )}

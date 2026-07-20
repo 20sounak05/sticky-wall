@@ -1,0 +1,112 @@
+.note-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(42, 31, 20, 0.55);
+  backdrop-filter: blur(4px);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.note-modal-backdrop.open {
+  opacity: 1
+}
+.note-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(42, 31, 20, 0.55);
+  backdrop-filter: blur(4px);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.note-modal-wrapper {
+  perspective: 1400px;
+}
+
+.note-modal-note {
+  position: relative;
+  width: 380px;
+  max-width: 90vw;
+  background: var(--paper);
+  padding: 36px 30px 28px 30px;
+  border-radius: 3px 3px 14px 3px;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+  transform-origin: top center;
+  transform: rotateX(-100deg) scale(0.9);
+  opacity: 0;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease;
+}
+
+.note-modal-note.open {
+  transform: rotateX(0deg) scale(1);
+  opacity: 1;
+}
+.note-modal-note {
+  position: relative;
+  width: 380px;
+  max-width: 90vw;
+  max-height: 80vh;
+  overflow-y: auto;
+  background: var(--paper);
+  padding: 36px 30px 28px 30px;
+  border-radius: 3px 3px 14px 3px;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+  transform-origin: top center;
+  transform: rotateX(-100deg) scale(0.9);
+  opacity: 0;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease;
+}
+
+.note-modal-note::before {
+  content: '';
+  position: absolute;
+  top: -11px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, color-mix(in srgb, var(--note-color) 60%, white), var(--note-color) 70%);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+}
+
+.note-modal-close {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  background: none;
+  border: none;
+  font-size: 22px;
+  color: #8a7f6f;
+  line-height: 1;
+}
+
+.note-modal-close:hover {
+  color: var(--ink);
+}
+
+.note-modal-content {
+  font-family: var(--font-hand);
+  font-size: 24px;
+  line-height: 1.4;
+  color: var(--ink);
+  margin: 16px 0 20px 0;
+  word-wrap: break-word;
+}
+
+.note-modal-content.locked {
+  font-family: var(--font-ui);
+  font-size: 14px;
+  color: #8a7f6f;
+  font-style: italic;
+}

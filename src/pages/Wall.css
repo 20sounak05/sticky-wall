@@ -77,3 +77,12 @@
   color: var(--paper);
   padding: 20px 40px;
 }
+
+.notes-board {
+  transition: filter 0.3s ease;
+}
+
+.notes-board.blurred {
+  filter: blur(4px) brightness(0.9);
+  pointer-events: none;
+}
